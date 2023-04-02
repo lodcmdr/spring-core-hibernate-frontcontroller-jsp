@@ -81,7 +81,8 @@ public class EmployeeController {
 	}
 	
 	
- /*
+ /*"/DeleteUser" is mapping to a separate delete.jsp 
+
 	@GetMapping("/DeleteUser")
 	public String deleteEmpById(@RequestParam int id,Model model) {
 		EmployeeEntity	employeeEntity	=employeeService.findById(id);
@@ -90,9 +91,13 @@ public class EmployeeController {
 	}
 	*/
 	
+	
+	/*deleting Employee using EmployeeEntity
+	 * for this code to work you have to uncomment above code*/
 	@PostMapping("/DeleteEmployee")
 	public String deleteEmployee(@ModelAttribute EmployeeEntity employeeEntity,Model model, RedirectAttributes redirectAttributes) {
 	    employeeService.deleteEmployee(employeeEntity);
+	    //has not worked
 	    redirectAttributes.addFlashAttribute("message", "This employee is no more with us in our database");	   
 	    return "redirect:showEmployees"; // Redirect to employee list page
 	}
